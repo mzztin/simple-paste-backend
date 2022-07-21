@@ -1,5 +1,5 @@
 {
-    "name": "project",
+    "name": "paste-backend",
     "version": "1.0.0",
     "description": "project description",
     "main": "dist/index.js",
@@ -9,7 +9,7 @@
         "start:ts": "ts-node src/index.ts",
         "start": "node .",
         "bns": "tsc && node .",
-        "format": "prettier --write ."
+        "format": "prettier --write ./src"
     },
     "keywords": [],
     "author": {

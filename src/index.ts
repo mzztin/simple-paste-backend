@@ -1,9 +1,9 @@
 import "dotenv/config";
 import "module-alias/register";
 
-import fastify, {FastifyRequest} from "fastify";
-import {z} from "zod";
-import {db} from "./db";
+import fastify, { FastifyRequest } from "fastify";
+import { z } from "zod";
+import { db } from "./db";
 import {
     createOne,
     createTable,
@@ -32,7 +32,7 @@ app.get(
         }>,
         res
     ) => {
-        const {id} = req.params;
+        const { id } = req.params;
 
         const data = await findOne(id);
 
@@ -58,11 +58,11 @@ app.post("/", async (req, res) => {
     const data = schema.safeParse(req.body);
 
     if (data.success === false) {
-        res.status(400).send({error: true, errors: data.error.errors });
+        res.status(400).send({ error: true, errors: data.error.errors });
         return;
     }
 
-    const {author, title, content} = data.data;
+    const { author, title, content } = data.data;
 
     const id = await createOne(
         title ?? "Untitled",
@@ -72,7 +72,7 @@ app.post("/", async (req, res) => {
     );
 
     if (id === false) {
-        res.status(400).send({error: true, msg: "Could not execute query"});
+        res.status(400).send({ error: true, msg: "Could not execute query" });
         return;
     }
 
@@ -92,11 +92,11 @@ app.listen(
         db.connect().then(() => {
             importModules().then(() => {
                 createTable();
-            })
+            });
         });
 
         console.log(`Listening on ${addr}`);
     }
 );
 
-export {app};
+export { app };

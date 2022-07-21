@@ -1,4 +1,4 @@
-import {db} from "./db";
+import { db } from "./db";
 
 export async function importModules() {
     db.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`);
